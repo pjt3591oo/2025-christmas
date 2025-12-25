@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Merry Christmas 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,9 +14,134 @@
 
         body {
             min-height: 100vh;
-            background: linear-gradient(to bottom, #0c1445 0%, #1a237e 50%, #283593 100%);
+            background: linear-gradient(to bottom, #0a0a20 0%, #1a1a40 30%, #2d1b4e 60%, #1a237e 100%);
             overflow-x: hidden;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Noto Sans KR', 'Segoe UI', sans-serif;
+            cursor: none;
+        }
+
+        /* 커스텀 커서 */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s;
+            mix-blend-mode: difference;
+        }
+
+        .cursor-dot {
+            width: 6px;
+            height: 6px;
+            background: #ffd700;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            box-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700;
+        }
+
+        /* 글리터 트레일 */
+        .glitter {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            font-size: 12px;
+            animation: glitterFade 1s forwards;
+        }
+
+        @keyframes glitterFade {
+            0% { opacity: 1; transform: scale(1) rotate(0deg); }
+            100% { opacity: 0; transform: scale(0) rotate(180deg) translateY(30px); }
+        }
+
+        /* 오로라 효과 */
+        .aurora {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .aurora-wave {
+            position: absolute;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(
+                180deg,
+                transparent 0%,
+                rgba(0, 255, 127, 0.1) 20%,
+                rgba(0, 191, 255, 0.15) 40%,
+                rgba(138, 43, 226, 0.1) 60%,
+                transparent 100%
+            );
+            animation: auroraMove 15s ease-in-out infinite;
+            filter: blur(30px);
+        }
+
+        .aurora-wave:nth-child(2) {
+            animation-delay: -5s;
+            animation-duration: 20s;
+            opacity: 0.7;
+        }
+
+        .aurora-wave:nth-child(3) {
+            animation-delay: -10s;
+            animation-duration: 25s;
+            opacity: 0.5;
+        }
+
+        @keyframes auroraMove {
+            0%, 100% { transform: translateX(-25%) skewX(-5deg); }
+            50% { transform: translateX(0%) skewX(5deg); }
+        }
+
+        /* 별 배경 */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star-bg {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkleStar 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkleStar {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        /* 별똥별 */
+        .shooting-star {
+            position: fixed;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, white, white);
+            border-radius: 50%;
+            animation: shoot 1.5s ease-out forwards;
+            z-index: 2;
+        }
+
+        @keyframes shoot {
+            0% { transform: translateX(0) translateY(0) rotate(-45deg); opacity: 1; }
+            100% { transform: translateX(400px) translateY(400px) rotate(-45deg); opacity: 0; }
         }
 
         /* 눈 내리는 효과 */
@@ -26,7 +152,7 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 1000;
+            z-index: 100;
         }
 
         .snowflake {
@@ -34,18 +160,74 @@
             top: -10px;
             color: white;
             font-size: 1em;
-            text-shadow: 0 0 5px #fff;
+            text-shadow: 0 0 5px #fff, 0 0 10px #b3e5fc;
             animation: fall linear infinite;
-            opacity: 0.8;
+            opacity: 0.9;
         }
 
         @keyframes fall {
             0% {
-                transform: translateY(-10px) rotate(0deg);
+                transform: translateY(-10px) rotate(0deg) translateX(0);
+            }
+            25% {
+                transform: translateY(25vh) rotate(90deg) translateX(15px);
+            }
+            50% {
+                transform: translateY(50vh) rotate(180deg) translateX(-15px);
+            }
+            75% {
+                transform: translateY(75vh) rotate(270deg) translateX(15px);
             }
             100% {
-                transform: translateY(100vh) rotate(360deg);
+                transform: translateY(100vh) rotate(360deg) translateX(0);
             }
+        }
+
+        /* 산타 썰매 */
+        .santa-sleigh {
+            position: fixed;
+            z-index: 50;
+            animation: santaFly 20s linear infinite;
+            font-size: 2.5rem;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));
+        }
+
+        @keyframes santaFly {
+            0% {
+                left: -200px;
+                top: 15%;
+                transform: scaleX(1);
+            }
+            45% {
+                left: 110%;
+                top: 10%;
+                transform: scaleX(1);
+            }
+            50% {
+                left: 110%;
+                top: 20%;
+                transform: scaleX(-1);
+            }
+            95% {
+                left: -200px;
+                top: 15%;
+                transform: scaleX(-1);
+            }
+            100% {
+                left: -200px;
+                top: 15%;
+                transform: scaleX(1);
+            }
+        }
+
+        .santa-sleigh .sleigh {
+            display: inline-block;
+            animation: bobbing 2s ease-in-out infinite;
+        }
+
+        @keyframes bobbing {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         /* 메인 컨텐츠 */
@@ -57,58 +239,82 @@
             min-height: 100vh;
             padding: 20px;
             position: relative;
+            z-index: 10;
         }
 
         /* 크리스마스 메시지 */
         .message {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             z-index: 10;
         }
 
         .message h1 {
-            font-size: 4rem;
+            font-family: 'Mountains of Christmas', cursive;
+            font-size: 5rem;
+            font-weight: 700;
             color: #fff;
             text-shadow:
                 0 0 10px #ff6b6b,
                 0 0 20px #ff6b6b,
-                0 0 30px #ff6b6b,
-                0 0 40px #ff0000;
-            animation: glow 2s ease-in-out infinite alternate;
-            margin-bottom: 10px;
+                0 0 40px #ff0000,
+                0 0 80px #ff0000,
+                4px 4px 0 #c41e3a;
+            animation: titleGlow 3s ease-in-out infinite;
+            margin-bottom: 15px;
+            letter-spacing: 5px;
         }
 
-        .message p {
-            font-size: 1.5rem;
-            color: #b3e5fc;
-            animation: fadeIn 2s ease-in;
+        .message .subtitle {
+            font-size: 1.8rem;
+            color: transparent;
+            background: linear-gradient(90deg, #ffd700, #fff, #ffd700);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shimmerText 3s linear infinite;
         }
 
-        @keyframes glow {
-            from {
+        @keyframes titleGlow {
+            0%, 100% {
                 text-shadow:
                     0 0 10px #ff6b6b,
                     0 0 20px #ff6b6b,
-                    0 0 30px #ff6b6b;
+                    0 0 40px #ff0000,
+                    0 0 80px #ff0000,
+                    4px 4px 0 #c41e3a;
             }
-            to {
+            50% {
                 text-shadow:
                     0 0 20px #4fc3f7,
-                    0 0 30px #4fc3f7,
                     0 0 40px #4fc3f7,
-                    0 0 50px #4fc3f7;
+                    0 0 60px #00bcd4,
+                    0 0 100px #00bcd4,
+                    4px 4px 0 #0097a7;
             }
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes shimmerText {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
         }
 
-        /* 크리스마스 트리 */
+        /* 3D 크리스마스 트리 */
         .tree-container {
             position: relative;
             z-index: 10;
+            perspective: 1000px;
+        }
+
+        .tree-wrapper {
+            position: relative;
+            transform-style: preserve-3d;
+            animation: treeFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes treeFloat {
+            0%, 100% { transform: translateY(0) rotateY(0deg); }
+            50% { transform: translateY(-10px) rotateY(5deg); }
         }
 
         .tree {
@@ -124,83 +330,107 @@
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
+            filter: drop-shadow(0 10px 20px rgba(0,100,0,0.5));
         }
 
         .tree-layer-1 {
-            border-width: 0 60px 100px 60px;
-            border-color: transparent transparent #2e7d32 transparent;
+            border-width: 0 70px 110px 70px;
+            border-color: transparent transparent #1b5e20 transparent;
             top: 0;
         }
 
         .tree-layer-2 {
-            border-width: 0 90px 130px 90px;
-            border-color: transparent transparent #388e3c transparent;
-            top: 70px;
+            border-width: 0 100px 140px 100px;
+            border-color: transparent transparent #2e7d32 transparent;
+            top: 75px;
         }
 
         .tree-layer-3 {
-            border-width: 0 120px 160px 120px;
-            border-color: transparent transparent #43a047 transparent;
-            top: 160px;
+            border-width: 0 130px 170px 130px;
+            border-color: transparent transparent #388e3c transparent;
+            top: 170px;
+        }
+
+        /* 트리 눈 */
+        .tree-layer::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 15px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.8), transparent);
+            border-radius: 50%;
         }
 
         .trunk {
-            width: 40px;
-            height: 50px;
-            background: #5d4037;
+            width: 50px;
+            height: 60px;
+            background: linear-gradient(90deg, #4e342e, #6d4c41, #4e342e);
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            top: 300px;
+            top: 320px;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        /* 별 */
-        .star {
+        /* 트리 꼭대기 별 - 3D 효과 */
+        .tree-star {
             position: absolute;
-            top: -40px;
+            top: -60px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 3rem;
-            animation: twinkle 1s ease-in-out infinite alternate;
+            font-size: 4rem;
+            animation: starPulse 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px gold) drop-shadow(0 0 40px orange);
         }
 
-        @keyframes twinkle {
-            from {
-                transform: translateX(-50%) scale(1);
-                filter: drop-shadow(0 0 10px gold);
-            }
-            to {
-                transform: translateX(-50%) scale(1.2);
-                filter: drop-shadow(0 0 20px gold) drop-shadow(0 0 30px orange);
-            }
-        }
-
-        /* 트리 장식 */
-        .ornament {
-            position: absolute;
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            animation: shine 2s ease-in-out infinite;
-        }
-
-        @keyframes shine {
+        @keyframes starPulse {
             0%, 100% {
-                transform: scale(1);
-                box-shadow: 0 0 5px currentColor;
+                transform: translateX(-50%) scale(1) rotate(0deg);
+                filter: drop-shadow(0 0 20px gold) drop-shadow(0 0 40px orange);
             }
             50% {
-                transform: scale(1.2);
-                box-shadow: 0 0 15px currentColor, 0 0 25px currentColor;
+                transform: translateX(-50%) scale(1.3) rotate(10deg);
+                filter: drop-shadow(0 0 40px gold) drop-shadow(0 0 60px orange) drop-shadow(0 0 80px yellow);
             }
         }
 
-        .ornament.red { background: #f44336; color: #f44336; }
-        .ornament.gold { background: #ffd700; color: #ffd700; }
-        .ornament.blue { background: #2196f3; color: #2196f3; }
-        .ornament.silver { background: #e0e0e0; color: #e0e0e0; }
+        /* 트리 장식 - 3D 공 */
+        .ornament {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            animation: ornamentSwing 3s ease-in-out infinite;
+            box-shadow: inset -3px -3px 8px rgba(0,0,0,0.3), inset 3px 3px 8px rgba(255,255,255,0.3);
+        }
 
-        /* 트리 조명 */
+        @keyframes ornamentSwing {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+        }
+
+        .ornament::before {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 5px;
+            width: 6px;
+            height: 6px;
+            background: rgba(255,255,255,0.6);
+            border-radius: 50%;
+        }
+
+        .ornament.red { background: linear-gradient(135deg, #ff6b6b, #c0392b); }
+        .ornament.gold { background: linear-gradient(135deg, #ffd700, #ff8c00); }
+        .ornament.blue { background: linear-gradient(135deg, #64b5f6, #1565c0); }
+        .ornament.silver { background: linear-gradient(135deg, #f5f5f5, #9e9e9e); }
+        .ornament.purple { background: linear-gradient(135deg, #ce93d8, #7b1fa2); }
+
+        /* 트리 조명 - LED 효과 */
         .lights {
             position: absolute;
             top: 0;
@@ -210,77 +440,268 @@
 
         .light {
             position: absolute;
-            width: 8px;
-            height: 8px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            animation: blink 1s ease-in-out infinite;
+            animation: ledBlink 1.5s ease-in-out infinite;
         }
 
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
+        @keyframes ledBlink {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.4;
+                transform: scale(0.8);
+            }
         }
 
-        /* 바닥 눈 */
+        /* 바닥 눈 - 더 자연스럽게 */
         .ground {
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 80px;
-            background: linear-gradient(to top, #fff 0%, #e3f2fd 50%, transparent 100%);
+            height: 120px;
             z-index: 5;
         }
 
-        .ground::before {
+        .ground-layer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 80px;
+            background: linear-gradient(to top, #fff 0%, #e3f2fd 60%, transparent 100%);
+        }
+
+        .ground-layer::before {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 40px;
+            height: 50px;
             background: #fff;
-            border-radius: 50% 50% 0 0;
+            border-radius: 100% 100% 0 0 / 30px 30px 0 0;
         }
 
-        /* 선물 상자 */
+        .snow-pile {
+            position: absolute;
+            bottom: 0;
+            background: #fff;
+            border-radius: 50% 50% 0 0;
+            box-shadow: inset 0 -10px 20px rgba(200,220,255,0.5);
+        }
+
+        /* 눈사람 */
+        .snowman {
+            position: fixed;
+            bottom: 50px;
+            right: 10%;
+            z-index: 20;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .snowman:hover {
+            transform: scale(1.1);
+        }
+
+        .snowman-body {
+            position: relative;
+        }
+
+        .snowman-bottom {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #fff 0%, #e0e0e0 100%);
+            border-radius: 50%;
+            box-shadow: inset -10px -10px 20px rgba(0,0,0,0.1);
+        }
+
+        .snowman-middle {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #fff 0%, #e0e0e0 100%);
+            border-radius: 50%;
+            position: absolute;
+            bottom: 60px;
+            left: 10px;
+            box-shadow: inset -8px -8px 15px rgba(0,0,0,0.1);
+        }
+
+        .snowman-head {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #fff 0%, #e0e0e0 100%);
+            border-radius: 50%;
+            position: absolute;
+            bottom: 110px;
+            left: 17px;
+            box-shadow: inset -5px -5px 10px rgba(0,0,0,0.1);
+        }
+
+        .snowman-hat {
+            position: absolute;
+            bottom: 150px;
+            left: 15px;
+        }
+
+        .hat-brim {
+            width: 50px;
+            height: 8px;
+            background: #212121;
+            border-radius: 3px;
+        }
+
+        .hat-top {
+            width: 35px;
+            height: 30px;
+            background: #212121;
+            position: absolute;
+            bottom: 8px;
+            left: 7px;
+            border-radius: 3px 3px 0 0;
+        }
+
+        .hat-band {
+            width: 35px;
+            height: 6px;
+            background: #c62828;
+            position: absolute;
+            bottom: 8px;
+            left: 7px;
+        }
+
+        .snowman-face {
+            position: absolute;
+            bottom: 120px;
+            left: 25px;
+        }
+
+        .snowman-eye {
+            width: 6px;
+            height: 6px;
+            background: #212121;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .snowman-eye.left { left: 0; }
+        .snowman-eye.right { left: 20px; }
+
+        .snowman-nose {
+            width: 0;
+            height: 0;
+            border-left: 15px solid #ff9800;
+            border-top: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+            position: absolute;
+            top: 12px;
+            left: 5px;
+        }
+
+        .snowman-mouth {
+            position: absolute;
+            top: 25px;
+            left: 3px;
+            display: flex;
+            gap: 3px;
+        }
+
+        .snowman-mouth span {
+            width: 4px;
+            height: 4px;
+            background: #212121;
+            border-radius: 50%;
+        }
+
+        .snowman-arms {
+            position: absolute;
+            bottom: 85px;
+        }
+
+        .arm {
+            width: 40px;
+            height: 4px;
+            background: #5d4037;
+            position: absolute;
+        }
+
+        .arm.left {
+            left: -35px;
+            transform: rotate(-20deg);
+        }
+
+        .arm.right {
+            right: -35px;
+            transform: rotate(20deg);
+        }
+
+        .snowman-scarf {
+            width: 55px;
+            height: 10px;
+            background: #c62828;
+            position: absolute;
+            bottom: 105px;
+            left: 12px;
+            border-radius: 3px;
+        }
+
+        .scarf-tail {
+            width: 15px;
+            height: 25px;
+            background: #c62828;
+            position: absolute;
+            top: 8px;
+            right: 0;
+            border-radius: 0 0 5px 5px;
+        }
+
+        /* 선물 상자 - 개선된 3D */
         .gifts {
             position: fixed;
-            bottom: 30px;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
-            gap: 20px;
-            z-index: 6;
+            gap: 25px;
+            z-index: 15;
         }
 
         .gift {
             position: relative;
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
         }
 
         .gift:hover {
-            transform: scale(1.1) rotate(-5deg);
+            transform: translateY(-15px) rotateY(10deg);
         }
 
         .gift-box {
-            width: 50px;
-            height: 40px;
+            width: 55px;
+            height: 45px;
             border-radius: 5px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
         .gift-lid {
-            width: 56px;
-            height: 12px;
+            width: 61px;
+            height: 14px;
             position: absolute;
-            top: -8px;
+            top: -10px;
             left: -3px;
-            border-radius: 3px;
+            border-radius: 4px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
         }
 
         .gift-ribbon-v {
             position: absolute;
-            width: 10px;
-            height: 40px;
+            width: 12px;
+            height: 45px;
             left: 50%;
             transform: translateX(-50%);
             top: 0;
@@ -288,8 +709,8 @@
 
         .gift-ribbon-h {
             position: absolute;
-            width: 56px;
-            height: 10px;
+            width: 61px;
+            height: 12px;
             left: -3px;
             top: 50%;
             transform: translateY(-50%);
@@ -297,47 +718,61 @@
 
         .gift-bow {
             position: absolute;
-            top: -20px;
+            top: -25px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 1.5rem;
+            font-size: 2rem;
+            filter: drop-shadow(0 3px 5px rgba(0,0,0,0.3));
         }
 
-        .gift-1 .gift-box { background: #e53935; }
-        .gift-1 .gift-lid { background: #c62828; }
-        .gift-1 .gift-ribbon-v, .gift-1 .gift-ribbon-h { background: #ffd700; }
+        .gift-1 .gift-box { background: linear-gradient(135deg, #e53935, #b71c1c); }
+        .gift-1 .gift-lid { background: linear-gradient(135deg, #c62828, #8e0000); }
+        .gift-1 .gift-ribbon-v, .gift-1 .gift-ribbon-h { background: linear-gradient(135deg, #ffd700, #ff8f00); }
 
-        .gift-2 .gift-box { background: #1e88e5; }
-        .gift-2 .gift-lid { background: #1565c0; }
-        .gift-2 .gift-ribbon-v, .gift-2 .gift-ribbon-h { background: #fff; }
+        .gift-2 .gift-box { background: linear-gradient(135deg, #1e88e5, #0d47a1); }
+        .gift-2 .gift-lid { background: linear-gradient(135deg, #1565c0, #002171); }
+        .gift-2 .gift-ribbon-v, .gift-2 .gift-ribbon-h { background: linear-gradient(135deg, #fff, #e0e0e0); }
 
-        .gift-3 .gift-box { background: #43a047; }
-        .gift-3 .gift-lid { background: #2e7d32; }
-        .gift-3 .gift-ribbon-v, .gift-3 .gift-ribbon-h { background: #ff5722; }
+        .gift-3 .gift-box { background: linear-gradient(135deg, #43a047, #1b5e20); }
+        .gift-3 .gift-lid { background: linear-gradient(135deg, #2e7d32, #003300); }
+        .gift-3 .gift-ribbon-v, .gift-3 .gift-ribbon-h { background: linear-gradient(135deg, #ff5722, #bf360c); }
 
-        /* 인터랙티브 버튼 */
+        .gift-4 .gift-box { background: linear-gradient(135deg, #ab47bc, #6a1b9a); }
+        .gift-4 .gift-lid { background: linear-gradient(135deg, #8e24aa, #4a0072); }
+        .gift-4 .gift-ribbon-v, .gift-4 .gift-ribbon-h { background: linear-gradient(135deg, #ffd700, #ff8f00); }
+
+        /* 마법 버튼 */
         .btn-container {
-            margin-top: 60px;
+            margin-top: 80px;
             z-index: 10;
         }
 
         .magic-btn {
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            background: linear-gradient(135deg, #e53935 0%, #c62828 100%);
+            padding: 18px 50px;
+            font-size: 1.3rem;
+            font-family: 'Mountains of Christmas', cursive;
+            background: linear-gradient(135deg, #e53935 0%, #c62828 50%, #b71c1c 100%);
             color: white;
             border: none;
             border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(229, 57, 53, 0.4);
-            transition: all 0.3s;
+            cursor: none;
+            box-shadow:
+                0 6px 20px rgba(229, 57, 53, 0.5),
+                inset 0 -3px 10px rgba(0,0,0,0.2),
+                inset 0 3px 10px rgba(255,255,255,0.2);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
+            letter-spacing: 2px;
         }
 
         .magic-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(229, 57, 53, 0.6);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow:
+                0 10px 30px rgba(229, 57, 53, 0.6),
+                0 0 50px rgba(255, 100, 100, 0.4),
+                inset 0 -3px 10px rgba(0,0,0,0.2),
+                inset 0 3px 10px rgba(255,255,255,0.2);
         }
 
         .magic-btn::before {
@@ -347,7 +782,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
             animation: shimmer 2s infinite;
         }
 
@@ -355,7 +790,7 @@
             100% { left: 100%; }
         }
 
-        /* 폭죽 효과 */
+        /* 폭죽 효과 - 개선 */
         .firework {
             position: fixed;
             pointer-events: none;
@@ -364,15 +799,16 @@
 
         .firework-particle {
             position: absolute;
-            width: 6px;
-            height: 6px;
             border-radius: 50%;
-            animation: explode 1s ease-out forwards;
+            animation: explode 1.5s ease-out forwards;
         }
 
         @keyframes explode {
             0% {
                 transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            50% {
                 opacity: 1;
             }
             100% {
@@ -381,88 +817,184 @@
             }
         }
 
-        /* 캐롤 플레이어 */
+        /* 반짝이 파티클 */
+        .sparkle {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            pointer-events: none;
+            z-index: 2001;
+            animation: sparkleFade 0.8s forwards;
+        }
+
+        @keyframes sparkleFade {
+            0% { opacity: 1; transform: scale(1) rotate(0deg); }
+            100% { opacity: 0; transform: scale(0) rotate(180deg); }
+        }
+
+        /* UI 요소들 */
         .music-toggle {
             position: fixed;
             top: 20px;
             right: 20px;
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.2);
-            border: 2px solid white;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
             color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
+            font-size: 1.6rem;
+            cursor: none;
             z-index: 1001;
             transition: all 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
         }
 
         .music-toggle:hover {
-            background: rgba(255,255,255,0.3);
-            transform: scale(1.1);
+            background: rgba(255,255,255,0.25);
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
         }
 
-        /* 카운트다운 */
+        .music-toggle.playing {
+            animation: pulse 1s infinite;
+            background: rgba(255,215,0,0.3);
+            border-color: gold;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255,215,0,0.5); }
+            50% { box-shadow: 0 0 0 15px rgba(255,215,0,0); }
+        }
+
+        /* 카운트다운 - 글래스모피즘 */
         .countdown {
             position: fixed;
             top: 20px;
             left: 20px;
             background: rgba(255,255,255,0.1);
-            padding: 15px 25px;
-            border-radius: 15px;
+            padding: 20px 30px;
+            border-radius: 20px;
             color: white;
             z-index: 1001;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
         }
 
         .countdown-title {
             font-size: 0.9rem;
             opacity: 0.8;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .countdown-time {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: bold;
+            background: linear-gradient(90deg, #ffd700, #fff, #ffd700);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: shimmerText 3s linear infinite;
         }
 
         .countdown-complete {
             color: #ffd700;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
+            text-shadow: 0 0 10px rgba(255,215,0,0.5);
+        }
+
+        /* 팝업 메시지 */
+        .popup-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: rgba(255,255,255,0.95);
+            padding: 40px 60px;
+            border-radius: 25px;
+            font-size: 1.6rem;
+            z-index: 3000;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            animation: popupIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            text-align: center;
+        }
+
+        @keyframes popupIn {
+            0% { transform: translate(-50%, -50%) scale(0) rotate(-10deg); }
+            100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
         }
 
         /* 반응형 */
         @media (max-width: 768px) {
+            body { cursor: auto; }
+            .cursor, .cursor-dot { display: none; }
+            .magic-btn, .music-toggle, .gift { cursor: pointer; }
+
             .message h1 {
-                font-size: 2.5rem;
+                font-size: 3rem;
             }
-            .message p {
-                font-size: 1rem;
+            .message .subtitle {
+                font-size: 1.2rem;
             }
             .tree-layer-1 {
-                border-width: 0 40px 70px 40px;
+                border-width: 0 50px 80px 50px;
             }
             .tree-layer-2 {
-                border-width: 0 60px 90px 60px;
-                top: 50px;
+                border-width: 0 70px 100px 70px;
+                top: 55px;
             }
             .tree-layer-3 {
-                border-width: 0 80px 110px 80px;
-                top: 110px;
+                border-width: 0 90px 120px 90px;
+                top: 125px;
             }
             .trunk {
-                width: 30px;
-                height: 40px;
-                top: 200px;
+                width: 35px;
+                height: 45px;
+                top: 230px;
+            }
+            .tree-star {
+                top: -45px;
+                font-size: 3rem;
+            }
+            .snowman {
+                transform: scale(0.7);
+                right: 5%;
+                bottom: 30px;
+            }
+            .santa-sleigh {
+                font-size: 1.8rem;
             }
         }
     </style>
 </head>
 <body>
+    <!-- 커스텀 커서 -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+
+    <!-- 오로라 -->
+    <div class="aurora">
+        <div class="aurora-wave"></div>
+        <div class="aurora-wave"></div>
+        <div class="aurora-wave"></div>
+    </div>
+
+    <!-- 별 배경 -->
+    <div class="stars" id="stars"></div>
+
+    <!-- 산타 썰매 -->
+    <div class="santa-sleigh">
+        <span class="sleigh">🦌🦌🦌🛷🎅</span>
+    </div>
+
     <!-- 눈 -->
     <div class="snowflakes" id="snowflakes"></div>
 
@@ -478,25 +1010,61 @@
     </div>
 
     <!-- 바닥 눈 -->
-    <div class="ground"></div>
+    <div class="ground">
+        <div class="ground-layer"></div>
+        <div class="snow-pile" style="left: 5%; width: 150px; height: 40px;"></div>
+        <div class="snow-pile" style="left: 30%; width: 200px; height: 50px;"></div>
+        <div class="snow-pile" style="right: 20%; width: 180px; height: 45px;"></div>
+    </div>
+
+    <!-- 눈사람 -->
+    <div class="snowman" id="snowman" title="클릭해보세요!">
+        <div class="snowman-body">
+            <div class="snowman-hat">
+                <div class="hat-top"></div>
+                <div class="hat-band"></div>
+                <div class="hat-brim"></div>
+            </div>
+            <div class="snowman-head"></div>
+            <div class="snowman-face">
+                <div class="snowman-eye left"></div>
+                <div class="snowman-eye right"></div>
+                <div class="snowman-nose"></div>
+                <div class="snowman-mouth">
+                    <span></span><span></span><span></span><span></span><span></span>
+                </div>
+            </div>
+            <div class="snowman-scarf">
+                <div class="scarf-tail"></div>
+            </div>
+            <div class="snowman-middle"></div>
+            <div class="snowman-arms">
+                <div class="arm left"></div>
+                <div class="arm right"></div>
+            </div>
+            <div class="snowman-bottom"></div>
+        </div>
+    </div>
 
     <!-- 메인 컨텐츠 -->
     <div class="container">
         <div class="message">
             <h1>Merry Christmas!</h1>
-            <p>행복하고 따뜻한 크리스마스 보내세요 ❄️</p>
+            <p class="subtitle">행복하고 따뜻한 크리스마스 보내세요</p>
         </div>
 
         <div class="tree-container">
-            <div class="star">⭐</div>
-            <div class="tree">
-                <div class="tree-layer tree-layer-1"></div>
-                <div class="tree-layer tree-layer-2"></div>
-                <div class="tree-layer tree-layer-3"></div>
-                <div class="trunk"></div>
+            <div class="tree-wrapper">
+                <div class="tree-star">⭐</div>
+                <div class="tree">
+                    <div class="tree-layer tree-layer-1"></div>
+                    <div class="tree-layer tree-layer-2"></div>
+                    <div class="tree-layer tree-layer-3"></div>
+                    <div class="trunk"></div>
+                </div>
+                <div class="lights" id="lights"></div>
+                <div class="ornaments" id="ornaments"></div>
             </div>
-            <div class="lights" id="lights"></div>
-            <div class="ornaments" id="ornaments"></div>
         </div>
 
         <div class="btn-container">
@@ -506,21 +1074,28 @@
 
     <!-- 선물들 -->
     <div class="gifts">
-        <div class="gift gift-1" onclick="openGift(this)">
+        <div class="gift gift-1" onclick="openGift(this, 0)">
             <div class="gift-bow">🎀</div>
             <div class="gift-lid"></div>
             <div class="gift-box"></div>
             <div class="gift-ribbon-v"></div>
             <div class="gift-ribbon-h"></div>
         </div>
-        <div class="gift gift-2" onclick="openGift(this)">
+        <div class="gift gift-2" onclick="openGift(this, 1)">
             <div class="gift-bow">🎀</div>
             <div class="gift-lid"></div>
             <div class="gift-box"></div>
             <div class="gift-ribbon-v"></div>
             <div class="gift-ribbon-h"></div>
         </div>
-        <div class="gift gift-3" onclick="openGift(this)">
+        <div class="gift gift-3" onclick="openGift(this, 2)">
+            <div class="gift-bow">🎀</div>
+            <div class="gift-lid"></div>
+            <div class="gift-box"></div>
+            <div class="gift-ribbon-v"></div>
+            <div class="gift-ribbon-h"></div>
+        </div>
+        <div class="gift gift-4" onclick="openGift(this, 3)">
             <div class="gift-bow">🎀</div>
             <div class="gift-lid"></div>
             <div class="gift-box"></div>
@@ -530,20 +1105,88 @@
     </div>
 
     <script>
+        // 커스텀 커서
+        const cursor = document.getElementById('cursor');
+        const cursorDot = document.getElementById('cursorDot');
+        let mouseX = 0, mouseY = 0;
+        let cursorX = 0, cursorY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            cursorDot.style.left = mouseX - 3 + 'px';
+            cursorDot.style.top = mouseY - 3 + 'px';
+
+            // 글리터 효과
+            if (Math.random() > 0.85) {
+                createGlitter(mouseX, mouseY);
+            }
+        });
+
+        function animateCursor() {
+            cursorX += (mouseX - cursorX) * 0.15;
+            cursorY += (mouseY - cursorY) * 0.15;
+            cursor.style.left = cursorX - 10 + 'px';
+            cursor.style.top = cursorY - 10 + 'px';
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // 글리터 생성
+        function createGlitter(x, y) {
+            const glitter = document.createElement('div');
+            glitter.className = 'glitter';
+            glitter.textContent = ['✦', '✧', '⋆', '✵', '✶'][Math.floor(Math.random() * 5)];
+            glitter.style.left = x + (Math.random() * 20 - 10) + 'px';
+            glitter.style.top = y + (Math.random() * 20 - 10) + 'px';
+            glitter.style.color = ['#ffd700', '#fff', '#ff6b6b', '#4fc3f7', '#ce93d8'][Math.floor(Math.random() * 5)];
+            document.body.appendChild(glitter);
+            setTimeout(() => glitter.remove(), 1000);
+        }
+
+        // 별 배경 생성
+        function createStars() {
+            const container = document.getElementById('stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star-bg';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 60 + '%';
+                star.style.width = (Math.random() * 3 + 1) + 'px';
+                star.style.height = star.style.width;
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                container.appendChild(star);
+            }
+        }
+
+        // 별똥별 생성
+        function createShootingStar() {
+            const star = document.createElement('div');
+            star.className = 'shooting-star';
+            star.style.left = Math.random() * 70 + '%';
+            star.style.top = Math.random() * 30 + '%';
+            document.body.appendChild(star);
+            setTimeout(() => star.remove(), 1500);
+        }
+
+        setInterval(createShootingStar, 4000);
+        setTimeout(createShootingStar, 2000);
+
         // 눈 생성
         function createSnowflakes() {
             const container = document.getElementById('snowflakes');
-            const snowflakeChars = ['❄', '❅', '❆', '✻', '✼', '❉', '✿'];
+            const snowflakeChars = ['❄', '❅', '❆', '✻', '✼', '❉', '✿', '⁕'];
 
-            for (let i = 0; i < 50; i++) {
+            for (let i = 0; i < 60; i++) {
                 const snowflake = document.createElement('div');
                 snowflake.className = 'snowflake';
                 snowflake.textContent = snowflakeChars[Math.floor(Math.random() * snowflakeChars.length)];
                 snowflake.style.left = Math.random() * 100 + '%';
-                snowflake.style.fontSize = (Math.random() * 1.5 + 0.5) + 'em';
-                snowflake.style.animationDuration = (Math.random() * 5 + 5) + 's';
-                snowflake.style.animationDelay = (Math.random() * 5) + 's';
-                snowflake.style.opacity = Math.random() * 0.6 + 0.4;
+                snowflake.style.fontSize = (Math.random() * 1.2 + 0.5) + 'em';
+                snowflake.style.animationDuration = (Math.random() * 8 + 8) + 's';
+                snowflake.style.animationDelay = (Math.random() * 8) + 's';
+                snowflake.style.opacity = Math.random() * 0.5 + 0.5;
                 container.appendChild(snowflake);
             }
         }
@@ -551,12 +1194,13 @@
         // 트리 장식 생성
         function createOrnaments() {
             const container = document.getElementById('ornaments');
-            const colors = ['red', 'gold', 'blue', 'silver'];
+            const colors = ['red', 'gold', 'blue', 'silver', 'purple'];
             const positions = [
-                { top: 40, left: -20 }, { top: 40, left: 20 },
-                { top: 100, left: -45 }, { top: 100, left: 0 }, { top: 100, left: 45 },
-                { top: 170, left: -70 }, { top: 170, left: -25 }, { top: 170, left: 25 }, { top: 170, left: 70 },
-                { top: 240, left: -90 }, { top: 240, left: -40 }, { top: 240, left: 10 }, { top: 240, left: 60 }, { top: 240, left: 100 }
+                { top: 35, left: -15 }, { top: 35, left: 15 },
+                { top: 90, left: -40 }, { top: 90, left: 0 }, { top: 90, left: 40 },
+                { top: 160, left: -65 }, { top: 160, left: -25 }, { top: 160, left: 15 }, { top: 160, left: 55 },
+                { top: 230, left: -85 }, { top: 230, left: -45 }, { top: 230, left: -5 }, { top: 230, left: 35 }, { top: 230, left: 75 },
+                { top: 280, left: -95 }, { top: 280, left: -55 }, { top: 280, left: 55 }, { top: 280, left: 95 }
             ];
 
             positions.forEach((pos, i) => {
@@ -564,7 +1208,7 @@
                 ornament.className = `ornament ${colors[i % colors.length]}`;
                 ornament.style.top = pos.top + 'px';
                 ornament.style.left = `calc(50% + ${pos.left}px)`;
-                ornament.style.animationDelay = (i * 0.2) + 's';
+                ornament.style.animationDelay = (i * 0.15) + 's';
                 container.appendChild(ornament);
             });
         }
@@ -572,35 +1216,42 @@
         // 트리 조명 생성
         function createLights() {
             const container = document.getElementById('lights');
-            const colors = ['#ff0', '#f00', '#0f0', '#00f', '#f0f', '#0ff'];
+            const colors = ['#ff0', '#f00', '#0f0', '#00f', '#f0f', '#0ff', '#ff6b6b', '#ffd700'];
 
-            for (let i = 0; i < 30; i++) {
+            for (let i = 0; i < 40; i++) {
                 const light = document.createElement('div');
                 light.className = 'light';
-                light.style.background = colors[i % colors.length];
-                light.style.boxShadow = `0 0 10px ${colors[i % colors.length]}`;
-                light.style.top = (Math.random() * 280 + 20) + 'px';
-                light.style.left = (Math.random() * 200 - 100) + 'px';
+                const color = colors[i % colors.length];
+                light.style.background = color;
+                light.style.boxShadow = `0 0 10px ${color}, 0 0 20px ${color}`;
+                light.style.top = (Math.random() * 300 + 20) + 'px';
+                light.style.left = (Math.random() * 220 - 110) + 'px';
                 light.style.animationDelay = (Math.random() * 2) + 's';
                 container.appendChild(light);
             }
         }
 
-        // 폭죽 효과
+        // 폭죽 효과 - 개선된 버전
         function createFirework(x, y) {
-            const colors = ['#ff0', '#f00', '#0f0', '#00f', '#f0f', '#0ff', '#ffd700', '#ff6b6b'];
+            const colors = ['#ff0', '#f00', '#0f0', '#00f', '#f0f', '#0ff', '#ffd700', '#ff6b6b', '#ce93d8'];
             const firework = document.createElement('div');
             firework.className = 'firework';
             firework.style.left = x + 'px';
             firework.style.top = y + 'px';
 
-            for (let i = 0; i < 30; i++) {
+            const particleCount = 40;
+            for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'firework-particle';
-                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const size = Math.random() * 6 + 4;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.background = color;
+                particle.style.boxShadow = `0 0 ${size}px ${color}`;
 
-                const angle = (Math.PI * 2 / 30) * i;
-                const distance = Math.random() * 100 + 50;
+                const angle = (Math.PI * 2 / particleCount) * i;
+                const distance = Math.random() * 120 + 60;
                 particle.style.setProperty('--tx', Math.cos(angle) * distance + 'px');
                 particle.style.setProperty('--ty', Math.sin(angle) * distance + 'px');
 
@@ -608,69 +1259,130 @@
             }
 
             document.body.appendChild(firework);
-            setTimeout(() => firework.remove(), 1000);
+            setTimeout(() => firework.remove(), 1500);
+        }
+
+        // 스파클 생성
+        function createSparkle(x, y) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.textContent = ['✦', '✧', '⋆', '✵'][Math.floor(Math.random() * 4)];
+            sparkle.style.left = x + 'px';
+            sparkle.style.top = y + 'px';
+            sparkle.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            sparkle.style.color = ['#ffd700', '#fff', '#ff6b6b'][Math.floor(Math.random() * 3)];
+            document.body.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 800);
         }
 
         // 마법 버튼
         document.getElementById('magicBtn').addEventListener('click', function(e) {
-            // 여러 개의 폭죽 생성
-            for (let i = 0; i < 5; i++) {
+            // 다중 폭죽
+            for (let i = 0; i < 8; i++) {
                 setTimeout(() => {
                     createFirework(
-                        Math.random() * window.innerWidth,
-                        Math.random() * window.innerHeight * 0.6
+                        Math.random() * window.innerWidth * 0.8 + window.innerWidth * 0.1,
+                        Math.random() * window.innerHeight * 0.5 + 50
                     );
-                }, i * 200);
+                }, i * 150);
+            }
+
+            // 스파클 효과
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    createSparkle(
+                        Math.random() * window.innerWidth,
+                        Math.random() * window.innerHeight
+                    );
+                }, i * 50);
             }
         });
 
         // 선물 열기
         const giftMessages = [
-            '🎁 행복한 하루 보내세요!',
-            '🌟 당신의 꿈이 이루어지길!',
-            '💖 사랑과 기쁨이 가득하길!'
+            { emoji: '🎁', text: '행복한 하루 보내세요!' },
+            { emoji: '🌟', text: '당신의 꿈이 이루어지길!' },
+            { emoji: '💖', text: '사랑과 기쁨이 가득하길!' },
+            { emoji: '🎄', text: '따뜻한 연말 되세요!' }
         ];
-        let giftIndex = 0;
 
-        function openGift(gift) {
-            gift.style.animation = 'none';
-            gift.style.transform = 'scale(1.2)';
+        function openGift(gift, index) {
+            const rect = gift.getBoundingClientRect();
 
-            createFirework(
-                gift.getBoundingClientRect().left + 25,
-                gift.getBoundingClientRect().top
-            );
+            // 선물 튀어오르는 효과
+            gift.style.transform = 'translateY(-30px) scale(1.2) rotate(5deg)';
 
-            const message = giftMessages[giftIndex % giftMessages.length];
-            giftIndex++;
+            // 폭죽
+            createFirework(rect.left + rect.width/2, rect.top);
 
+            // 스파클
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    createSparkle(
+                        rect.left + Math.random() * 60,
+                        rect.top + Math.random() * 60 - 30
+                    );
+                }, i * 50);
+            }
+
+            // 메시지 팝업
+            const msg = giftMessages[index];
             const popup = document.createElement('div');
-            popup.style.cssText = `
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                background: rgba(255,255,255,0.95);
-                padding: 30px 50px;
-                border-radius: 20px;
-                font-size: 1.5rem;
-                z-index: 3000;
-                animation: fadeIn 0.5s;
-                box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-            `;
-            popup.textContent = message;
+            popup.className = 'popup-message';
+            popup.innerHTML = `<div style="font-size:3rem;margin-bottom:15px;">${msg.emoji}</div>${msg.text}`;
             document.body.appendChild(popup);
 
             setTimeout(() => {
-                popup.style.opacity = '0';
-                popup.style.transition = 'opacity 0.5s';
-                setTimeout(() => popup.remove(), 500);
-            }, 2000);
+                popup.style.animation = 'popupIn 0.3s reverse forwards';
+                setTimeout(() => popup.remove(), 300);
+            }, 2500);
 
             setTimeout(() => {
                 gift.style.transform = '';
-            }, 300);
+            }, 400);
         }
+
+        // 눈사람 클릭
+        document.getElementById('snowman').addEventListener('click', function() {
+            const rect = this.getBoundingClientRect();
+
+            // 눈사람이 흔들림
+            this.style.animation = 'shake 0.5s';
+            setTimeout(() => this.style.animation = '', 500);
+
+            // 스파클 효과
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    createSparkle(
+                        rect.left + Math.random() * rect.width,
+                        rect.top + Math.random() * rect.height
+                    );
+                }, i * 30);
+            }
+
+            // 메시지
+            const messages = ['☃️ 반가워요!', '⛄ 즐거운 크리스마스!', '🎿 눈이 좋아요!'];
+            const popup = document.createElement('div');
+            popup.className = 'popup-message';
+            popup.textContent = messages[Math.floor(Math.random() * messages.length)];
+            document.body.appendChild(popup);
+
+            setTimeout(() => {
+                popup.style.animation = 'popupIn 0.3s reverse forwards';
+                setTimeout(() => popup.remove(), 300);
+            }, 1500);
+        });
+
+        // shake 애니메이션 추가
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0) rotate(0); }
+                25% { transform: translateX(-10px) rotate(-5deg); }
+                75% { transform: translateX(10px) rotate(5deg); }
+            }
+        `;
+        document.head.appendChild(style);
 
         // 카운트다운
         function updateCountdown() {
@@ -698,43 +1410,49 @@
                 `${days}일 ${hours}시간 ${minutes}분 ${seconds}초`;
         }
 
-        // 음악 토글 (시뮬레이션)
+        // 음악 토글
         let musicPlaying = false;
-        document.getElementById('musicToggle').addEventListener('click', function() {
+        const musicBtn = document.getElementById('musicToggle');
+
+        musicBtn.addEventListener('click', function() {
             musicPlaying = !musicPlaying;
             this.textContent = musicPlaying ? '🔊' : '🔇';
-
-            if (musicPlaying) {
-                // 음악 재생 시뮬레이션
-                this.style.animation = 'pulse 1s infinite';
-            } else {
-                this.style.animation = '';
-            }
+            this.classList.toggle('playing', musicPlaying);
         });
 
         // 초기화
+        createStars();
         createSnowflakes();
         createOrnaments();
         createLights();
         updateCountdown();
         setInterval(updateCountdown, 1000);
 
-        // 클릭으로 눈 추가
+        // 배경 클릭 시 눈 추가
         document.addEventListener('click', function(e) {
             if (e.target.closest('.magic-btn') || e.target.closest('.gift') ||
-                e.target.closest('.music-toggle')) return;
+                e.target.closest('.music-toggle') || e.target.closest('.snowman')) return;
 
+            // 클릭 위치에 눈송이 추가
             const snowflake = document.createElement('div');
             snowflake.className = 'snowflake';
-            snowflake.textContent = '❄';
+            snowflake.textContent = ['❄', '❅', '❆'][Math.floor(Math.random() * 3)];
             snowflake.style.left = e.clientX + 'px';
             snowflake.style.top = e.clientY + 'px';
             snowflake.style.fontSize = '2em';
-            snowflake.style.animationDuration = '3s';
+            snowflake.style.animationDuration = '4s';
             document.getElementById('snowflakes').appendChild(snowflake);
+            setTimeout(() => snowflake.remove(), 4000);
 
-            setTimeout(() => snowflake.remove(), 3000);
+            // 클릭 위치에 스파클
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => createSparkle(e.clientX, e.clientY), i * 50);
+            }
         });
+
+        // 콘솔 이스터에그
+        console.log('%c🎄 Merry Christmas! 🎄', 'font-size: 30px; color: #2e7d32; text-shadow: 2px 2px #c62828;');
+        console.log('%c Made with ❤️', 'font-size: 16px; color: #e53935;');
     </script>
 </body>
 </html>
