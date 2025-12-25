@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merry Christmas 2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(to bottom, #0c1445 0%, #1a237e 50%, #283593 100%);
+            overflow-x: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* 눈 내리는 효과 */
+        .snowflakes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: white;
+            font-size: 1em;
+            text-shadow: 0 0 5px #fff;
+            animation: fall linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10px) rotate(0deg);
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        /* 메인 컨텐츠 */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* 크리스마스 메시지 */
+        .message {
+            text-align: center;
+            margin-bottom: 40px;
+            z-index: 10;
+        }
+
+        .message h1 {
+            font-size: 4rem;
+            color: #fff;
+            text-shadow:
+                0 0 10px #ff6b6b,
+                0 0 20px #ff6b6b,
+                0 0 30px #ff6b6b,
+                0 0 40px #ff0000;
+            animation: glow 2s ease-in-out infinite alternate;
+            margin-bottom: 10px;
+        }
+
+        .message p {
+            font-size: 1.5rem;
+            color: #b3e5fc;
+            animation: fadeIn 2s ease-in;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow:
+                    0 0 10px #ff6b6b,
+                    0 0 20px #ff6b6b,
+                    0 0 30px #ff6b6b;
+            }
+            to {
+                text-shadow:
+                    0 0 20px #4fc3f7,
+                    0 0 30px #4fc3f7,
+                    0 0 40px #4fc3f7,
+                    0 0 50px #4fc3f7;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 크리스마스 트리 */
+        .tree-container {
+            position: relative;
+            z-index: 10;
+        }
+
+        .tree {
+            position: relative;
+            width: 0;
+            height: 0;
+        }
+
+        .tree-layer {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .tree-layer-1 {
+            border-width: 0 60px 100px 60px;
+            border-color: transparent transparent #2e7d32 transparent;
+            top: 0;
+        }
+
+        .tree-layer-2 {
+            border-width: 0 90px 130px 90px;
+            border-color: transparent transparent #388e3c transparent;
+            top: 70px;
+        }
+
+        .tree-layer-3 {
+            border-width: 0 120px 160px 120px;
+            border-color: transparent transparent #43a047 transparent;
+            top: 160px;
+        }
+
+        .trunk {
+            width: 40px;
+            height: 50px;
+            background: #5d4037;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 300px;
+        }
+
+        /* 별 */
+        .star {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3rem;
+            animation: twinkle 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes twinkle {
+            from {
+                transform: translateX(-50%) scale(1);
+                filter: drop-shadow(0 0 10px gold);
+            }
+            to {
+                transform: translateX(-50%) scale(1.2);
+                filter: drop-shadow(0 0 20px gold) drop-shadow(0 0 30px orange);
+            }
+        }
+
+        /* 트리 장식 */
+        .ornament {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            animation: shine 2s ease-in-out infinite;
+        }
+
+        @keyframes shine {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 5px currentColor;
+            }
+            50% {
+                transform: scale(1.2);
+                box-shadow: 0 0 15px currentColor, 0 0 25px currentColor;
+            }
+        }
+
+        .ornament.red { background: #f44336; color: #f44336; }
+        .ornament.gold { background: #ffd700; color: #ffd700; }
+        .ornament.blue { background: #2196f3; color: #2196f3; }
+        .ornament.silver { background: #e0e0e0; color: #e0e0e0; }
+
+        /* 트리 조명 */
+        .lights {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .light {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            animation: blink 1s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* 바닥 눈 */
+        .ground {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background: linear-gradient(to top, #fff 0%, #e3f2fd 50%, transparent 100%);
+            z-index: 5;
+        }
+
+        .ground::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: #fff;
+            border-radius: 50% 50% 0 0;
+        }
+
+        /* 선물 상자 */
+        .gifts {
+            position: fixed;
+            bottom: 30px;
+            display: flex;
+            gap: 20px;
+            z-index: 6;
+        }
+
+        .gift {
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .gift:hover {
+            transform: scale(1.1) rotate(-5deg);
+        }
+
+        .gift-box {
+            width: 50px;
+            height: 40px;
+            border-radius: 5px;
+        }
+
+        .gift-lid {
+            width: 56px;
+            height: 12px;
+            position: absolute;
+            top: -8px;
+            left: -3px;
+            border-radius: 3px;
+        }
+
+        .gift-ribbon-v {
+            position: absolute;
+            width: 10px;
+            height: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+        }
+
+        .gift-ribbon-h {
+            position: absolute;
+            width: 56px;
+            height: 10px;
+            left: -3px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .gift-bow {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+        }
+
+        .gift-1 .gift-box { background: #e53935; }
+        .gift-1 .gift-lid { background: #c62828; }
+        .gift-1 .gift-ribbon-v, .gift-1 .gift-ribbon-h { background: #ffd700; }
+
+        .gift-2 .gift-box { background: #1e88e5; }
+        .gift-2 .gift-lid { background: #1565c0; }
+        .gift-2 .gift-ribbon-v, .gift-2 .gift-ribbon-h { background: #fff; }
+
+        .gift-3 .gift-box { background: #43a047; }
+        .gift-3 .gift-lid { background: #2e7d32; }
+        .gift-3 .gift-ribbon-v, .gift-3 .gift-ribbon-h { background: #ff5722; }
+
+        /* 인터랙티브 버튼 */
+        .btn-container {
+            margin-top: 60px;
+            z-index: 10;
+        }
+
+        .magic-btn {
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            background: linear-gradient(135deg, #e53935 0%, #c62828 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(229, 57, 53, 0.4);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .magic-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(229, 57, 53, 0.6);
+        }
+
+        .magic-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            100% { left: 100%; }
+        }
+
+        /* 폭죽 효과 */
+        .firework {
+            position: fixed;
+            pointer-events: none;
+            z-index: 2000;
+        }
+
+        .firework-particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            animation: explode 1s ease-out forwards;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty)) scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* 캐롤 플레이어 */
+        .music-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            border: 2px solid white;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .music-toggle:hover {
+            background: rgba(255,255,255,0.3);
+            transform: scale(1.1);
+        }
+
+        /* 카운트다운 */
+        .countdown {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255,255,255,0.1);
+            padding: 15px 25px;
+            border-radius: 15px;
+            color: white;
+            z-index: 1001;
+            backdrop-filter: blur(10px);
+        }
+
+        .countdown-title {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+
+        .countdown-time {
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .countdown-complete {
+            color: #ffd700;
+            font-size: 1.2rem;
+        }
+
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .message h1 {
+                font-size: 2.5rem;
+            }
+            .message p {
+                font-size: 1rem;
+            }
+            .tree-layer-1 {
+                border-width: 0 40px 70px 40px;
+            }
+            .tree-layer-2 {
+                border-width: 0 60px 90px 60px;
+                top: 50px;
+            }
+            .tree-layer-3 {
+                border-width: 0 80px 110px 80px;
+                top: 110px;
+            }
+            .trunk {
+                width: 30px;
+                height: 40px;
+                top: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 눈 -->
+    <div class="snowflakes" id="snowflakes"></div>
+
+    <!-- 음악 토글 -->
+    <button class="music-toggle" id="musicToggle" title="음악 켜기/끄기">
+        🔇
+    </button>
+
+    <!-- 카운트다운 -->
+    <div class="countdown" id="countdown">
+        <div class="countdown-title">다음 크리스마스까지</div>
+        <div class="countdown-time" id="countdownTime"></div>
+    </div>
+
+    <!-- 바닥 눈 -->
+    <div class="ground"></div>
+
+    <!-- 메인 컨텐츠 -->
+    <div class="container">
+        <div class="message">
+            <h1>Merry Christmas!</h1>
+            <p>행복하고 따뜻한 크리스마스 보내세요 ❄️</p>
+        </div>
+
+        <div class="tree-container">
+            <div class="star">⭐</div>
+            <div class="tree">
+                <div class="tree-layer tree-layer-1"></div>
+                <div class="tree-layer tree-layer-2"></div>
+                <div class="tree-layer tree-layer-3"></div>
+                <div class="trunk"></div>
+            </div>
+            <div class="lights" id="lights"></div>
+            <div class="ornaments" id="ornaments"></div>
+        </div>
+
+        <div class="btn-container">
+            <button class="magic-btn" id="magicBtn">✨ 마법 부리기 ✨</button>
+        </div>
+    </div>
+
+    <!-- 선물들 -->
+    <div class="gifts">
+        <div class="gift gift-1" onclick="openGift(this)">
+            <div class="gift-bow">🎀</div>
+            <div class="gift-lid"></div>
+            <div class="gift-box"></div>
+            <div class="gift-ribbon-v"></div>
+            <div class="gift-ribbon-h"></div>
+        </div>
+        <div class="gift gift-2" onclick="openGift(this)">
+            <div class="gift-bow">🎀</div>
+            <div class="gift-lid"></div>
+            <div class="gift-box"></div>
+            <div class="gift-ribbon-v"></div>
+            <div class="gift-ribbon-h"></div>
+        </div>
+        <div class="gift gift-3" onclick="openGift(this)">
+            <div class="gift-bow">🎀</div>
+            <div class="gift-lid"></div>
+            <div class="gift-box"></div>
+            <div class="gift-ribbon-v"></div>
+            <div class="gift-ribbon-h"></div>
+        </div>
+    </div>
+
+    <script>
+        // 눈 생성
+        function createSnowflakes() {
+            const container = document.getElementById('snowflakes');
+            const snowflakeChars = ['❄', '❅', '❆', '✻', '✼', '❉', '✿'];
+
+            for (let i = 0; i < 50; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.className = 'snowflake';
+                snowflake.textContent = snowflakeChars[Math.floor(Math.random() * snowflakeChars.length)];
+                snowflake.style.left = Math.random() * 100 + '%';
+                snowflake.style.fontSize = (Math.random() * 1.5 + 0.5) + 'em';
+                snowflake.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                snowflake.style.animationDelay = (Math.random() * 5) + 's';
+                snowflake.style.opacity = Math.random() * 0.6 + 0.4;
+                container.appendChild(snowflake);
+            }
+        }
+
+        // 트리 장식 생성
+        function createOrnaments() {
+            const container = document.getElementById('ornaments');
+            const colors = ['red', 'gold', 'blue', 'silver'];
+            const positions = [
+                { top: 40, left: -20 }, { top: 40, left: 20 },
+                { top: 100, left: -45 }, { top: 100, left: 0 }, { top: 100, left: 45 },
+                { top: 170, left: -70 }, { top: 170, left: -25 }, { top: 170, left: 25 }, { top: 170, left: 70 },
+                { top: 240, left: -90 }, { top: 240, left: -40 }, { top: 240, left: 10 }, { top: 240, left: 60 }, { top: 240, left: 100 }
+            ];
+
+            positions.forEach((pos, i) => {
+                const ornament = document.createElement('div');
+                ornament.className = `ornament ${colors[i % colors.length]}`;
+                ornament.style.top = pos.top + 'px';
+                ornament.style.left = `calc(50% + ${pos.left}px)`;
+                ornament.style.animationDelay = (i * 0.2) + 's';
+                container.appendChild(ornament);
+            });
+        }
+
+        // 트리 조명 생성
+        function createLights() {
+            const container = document.getElementById('lights');
+            const colors = ['#ff0', '#f00', '#0f0', '#00f', '#f0f', '#0ff'];
+
+            for (let i = 0; i < 30; i++) {
+                const light = document.createElement('div');
+                light.className = 'light';
+                light.style.background = colors[i % colors.length];
+                light.style.boxShadow = `0 0 10px ${colors[i % colors.length]}`;
+                light.style.top = (Math.random() * 280 + 20) + 'px';
+                light.style.left = (Math.random() * 200 - 100) + 'px';
+                light.style.animationDelay = (Math.random() * 2) + 's';
+                container.appendChild(light);
+            }
+        }
+
+        // 폭죽 효과
+        function createFirework(x, y) {
+            const colors = ['#ff0', '#f00', '#0f0', '#00f', '#f0f', '#0ff', '#ffd700', '#ff6b6b'];
+            const firework = document.createElement('div');
+            firework.className = 'firework';
+            firework.style.left = x + 'px';
+            firework.style.top = y + 'px';
+
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'firework-particle';
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+                const angle = (Math.PI * 2 / 30) * i;
+                const distance = Math.random() * 100 + 50;
+                particle.style.setProperty('--tx', Math.cos(angle) * distance + 'px');
+                particle.style.setProperty('--ty', Math.sin(angle) * distance + 'px');
+
+                firework.appendChild(particle);
+            }
+
+            document.body.appendChild(firework);
+            setTimeout(() => firework.remove(), 1000);
+        }
+
+        // 마법 버튼
+        document.getElementById('magicBtn').addEventListener('click', function(e) {
+            // 여러 개의 폭죽 생성
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    createFirework(
+                        Math.random() * window.innerWidth,
+                        Math.random() * window.innerHeight * 0.6
+                    );
+                }, i * 200);
+            }
+        });
+
+        // 선물 열기
+        const giftMessages = [
+            '🎁 행복한 하루 보내세요!',
+            '🌟 당신의 꿈이 이루어지길!',
+            '💖 사랑과 기쁨이 가득하길!'
+        ];
+        let giftIndex = 0;
+
+        function openGift(gift) {
+            gift.style.animation = 'none';
+            gift.style.transform = 'scale(1.2)';
+
+            createFirework(
+                gift.getBoundingClientRect().left + 25,
+                gift.getBoundingClientRect().top
+            );
+
+            const message = giftMessages[giftIndex % giftMessages.length];
+            giftIndex++;
+
+            const popup = document.createElement('div');
+            popup.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(255,255,255,0.95);
+                padding: 30px 50px;
+                border-radius: 20px;
+                font-size: 1.5rem;
+                z-index: 3000;
+                animation: fadeIn 0.5s;
+                box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            `;
+            popup.textContent = message;
+            document.body.appendChild(popup);
+
+            setTimeout(() => {
+                popup.style.opacity = '0';
+                popup.style.transition = 'opacity 0.5s';
+                setTimeout(() => popup.remove(), 500);
+            }, 2000);
+
+            setTimeout(() => {
+                gift.style.transform = '';
+            }, 300);
+        }
+
+        // 카운트다운
+        function updateCountdown() {
+            const now = new Date();
+            const christmas = new Date(now.getFullYear(), 11, 25);
+
+            if (now > christmas) {
+                christmas.setFullYear(christmas.getFullYear() + 1);
+            }
+
+            const diff = christmas - now;
+
+            if (diff <= 0 || (now.getMonth() === 11 && now.getDate() === 25)) {
+                document.getElementById('countdownTime').innerHTML =
+                    '<span class="countdown-complete">🎄 메리 크리스마스! 🎄</span>';
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('countdownTime').textContent =
+                `${days}일 ${hours}시간 ${minutes}분 ${seconds}초`;
+        }
+
+        // 음악 토글 (시뮬레이션)
+        let musicPlaying = false;
+        document.getElementById('musicToggle').addEventListener('click', function() {
+            musicPlaying = !musicPlaying;
+            this.textContent = musicPlaying ? '🔊' : '🔇';
+
+            if (musicPlaying) {
+                // 음악 재생 시뮬레이션
+                this.style.animation = 'pulse 1s infinite';
+            } else {
+                this.style.animation = '';
+            }
+        });
+
+        // 초기화
+        createSnowflakes();
+        createOrnaments();
+        createLights();
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // 클릭으로 눈 추가
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.magic-btn') || e.target.closest('.gift') ||
+                e.target.closest('.music-toggle')) return;
+
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.textContent = '❄';
+            snowflake.style.left = e.clientX + 'px';
+            snowflake.style.top = e.clientY + 'px';
+            snowflake.style.fontSize = '2em';
+            snowflake.style.animationDuration = '3s';
+            document.getElementById('snowflakes').appendChild(snowflake);
+
+            setTimeout(() => snowflake.remove(), 3000);
+        });
+    </script>
+</body>
+</html>
